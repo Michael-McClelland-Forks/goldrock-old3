@@ -96,30 +96,30 @@ data "aws_iam_policy_document" "cloudtrail" {
   #   }
   # }
 
-  statement {
-    effect = "Deny"
-    principals {
-      type        = "AWS"
-      identifiers = ["*"]
-    }
-    actions = [
-      "s3:PutObject",
-    ]
+  # statement {
+  #   effect = "Deny"
+  #   principals {
+  #     type        = "AWS"
+  #     identifiers = ["*"]
+  #   }
+  #   actions = [
+  #     "s3:PutObject",
+  #   ]
 
-    resources = [
-      "${aws_s3_bucket.cloudtrail.arn}/*"
-    ]
-    condition {
-      test     = "StringNotEqualsIfExists"
-      variable = "s3:x-amz-server-side-encryption"
-      values   = ["aws:kms"]
-    }
-    condition {
-      test     = "Null"
-      variable = "s3:x-amz-server-side-encryption"
-      values   = ["false"]
-    }
-  }
+  #   resources = [
+  #     "${aws_s3_bucket.cloudtrail.arn}/*"
+  #   ]
+  #   condition {
+  #     test     = "StringNotEqualsIfExists"
+  #     variable = "s3:x-amz-server-side-encryption"
+  #     values   = ["aws:kms"]
+  #   }
+  #   condition {
+  #     test     = "Null"
+  #     variable = "s3:x-amz-server-side-encryption"
+  #     values   = ["false"]
+  #   }
+  # }
 
   # statement {
   #   effect = "Deny"
