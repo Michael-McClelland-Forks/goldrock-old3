@@ -10,24 +10,6 @@ resource "aws_s3_bucket_policy" "cloudtrail" {
 
 data "aws_iam_policy_document" "cloudtrail" {
 
-
-    statement {
-    sid    = "ct"
-    effect = "Allow"
-    principals {
-      type        = "Service"
-      identifiers = ["cloudtrail.amazonaws.com"]
-    }
-    actions = [
-      "s3:*"
-    ]
-
-    resources = [
-      "${aws_s3_bucket.cloudtrail.arn}",
-      "${aws_s3_bucket.cloudtrail.arn}/*"
-    ]
-  }
-
   statement {
     sid    = "getbucketacl-cloudtrail"
     effect = "Allow"
@@ -69,7 +51,8 @@ data "aws_iam_policy_document" "cloudtrail" {
       "s3:PutObject"
     ]
     resources = [
-      "${aws_s3_bucket.cloudtrail.arn}/goldrock/AWSLogs/${data.aws_organizations_organization.current.id}/*"
+      "${aws_s3_bucket.cloudtrail.arn}/goldrock/AWSLogs/${data.aws_organizations_organization.current.id}/*",
+      "${aws_s3_bucket.cloudtrail.arn}/goldrock/AWSLogs/${data.aws_organizations_organization.current.master_account_id}/*"
     ]
     # condition {
     #   test     = "StringEquals"
