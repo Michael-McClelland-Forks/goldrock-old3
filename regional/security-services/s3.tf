@@ -121,25 +121,25 @@ data "aws_iam_policy_document" "cloudtrail" {
     }
   }
 
-  statement {
-    effect = "Deny"
-    principals {
-      type        = "AWS"
-      identifiers = ["*"]
-    }
-    actions = [
-      "s3:PutObject",
-    ]
+  # statement {
+  #   effect = "Deny"
+  #   principals {
+  #     type        = "AWS"
+  #     identifiers = ["*"]
+  #   }
+  #   actions = [
+  #     "s3:PutObject",
+  #   ]
 
-    resources = [
-      "${aws_s3_bucket.cloudtrail.arn}/*"
-    ]
-    condition {
-      test     = "StringNotEquals"
-      variable = "s3:x-amz-server-side-encryption-aws-kms-key-id"
-      values   = [aws_kms_key.key.arn]
-    }
-  }
+  #   resources = [
+  #     "${aws_s3_bucket.cloudtrail.arn}/*"
+  #   ]
+  #   condition {
+  #     test     = "StringNotEquals"
+  #     variable = "s3:x-amz-server-side-encryption-aws-kms-key-id"
+  #     values   = [aws_kms_key.key.arn]
+  #   }
+  # }
 
   statement {
     effect = "Deny"
