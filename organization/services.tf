@@ -5,10 +5,10 @@ resource "aws_guardduty_organization_admin_account" "aws_guardduty_organization_
   }
 }
 
-import {
-  to = aws_guardduty_organization_admin_account.aws_guardduty_organization_admin_account
-  id = "024848471389"
-}
+# import {
+#   to = aws_guardduty_organization_admin_account.aws_guardduty_organization_admin_account
+#   id = "024848471389"
+# }
 
 
 
@@ -22,10 +22,10 @@ resource "aws_securityhub_organization_admin_account" "aws_securityhub_organizat
   depends_on = [aws_securityhub_account.aws_securityhub_management_account]
 }
 
-import {
-  to = aws_securityhub_organization_admin_account.aws_securityhub_organization_admin_account
-  id = "024848471389"
-}
+# import {
+#   to = aws_securityhub_organization_admin_account.aws_securityhub_organization_admin_account
+#   id = "024848471389"
+# }
 
 #Workaround for SecurityHub Central Configuration
 resource "aws_securityhub_account" "aws_securityhub_management_account" {
@@ -42,10 +42,10 @@ resource "aws_detective_organization_admin_account" "aws_detective_organization_
   }
 }
 
-import {
-  to = aws_detective_organization_admin_account.aws_detective_organization_admin_account
-  id = "024848471389"
-}
+# import {
+#   to = aws_detective_organization_admin_account.aws_detective_organization_admin_account
+#   id = "024848471389"
+# }
 
 resource "aws_macie2_organization_admin_account" "aws_macie2_organization_admin_account" {
   admin_account_id = module.organization_structure.security_account
@@ -55,10 +55,10 @@ resource "aws_macie2_organization_admin_account" "aws_macie2_organization_admin_
   }
 }
 
-import {
-  to = aws_macie2_organization_admin_account.aws_macie2_organization_admin_account
-  id = "024848471389"
-}
+# import {
+#   to = aws_macie2_organization_admin_account.aws_macie2_organization_admin_account
+#   id = "024848471389"
+# }
 
 resource "aws_organizations_delegated_administrator" "access_analyzer" {
   account_id        = module.organization_structure.security_account
