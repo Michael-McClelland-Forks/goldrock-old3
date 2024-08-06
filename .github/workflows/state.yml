@@ -153,6 +153,7 @@ jobs:
         env:
           TF_VAR_name: ${{env.ORGANIZATION_IDENTIFIER}}-tfstate
         run: |
+          terraform state rm aws_dynamodb_table.tf_lock_table
           terraform import aws_dynamodb_table.tf_lock_table ${{env.ORGANIZATION_IDENTIFIER}}-tfstate-${{env.ORGANIZATION_MANAGEMENT_ACCOUNT_ID}}-${{env.region}}
 
       - name: Terraform plan
